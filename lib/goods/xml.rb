@@ -231,7 +231,7 @@ module Goods
       }
     end
 
-    def offer_piture_node_to_hash offer_picture_node
+    def offer_picture_node_to_hash offer_picture_node
       {
           url: extract_text(offer_picture_node)
       }
