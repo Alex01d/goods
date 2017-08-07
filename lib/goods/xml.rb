@@ -126,7 +126,8 @@ module Goods
     #---------------------------------------------------------------------------
 
     def offer_nodes
-      shop_node / 'offers' / 'offer'
+      res = shop_node / 'offers' / 'offer'
+      res.empty? ? shop_node / 'models' / 'model' : res
     end
 
     def offer_barcode_nodes offer_node
@@ -142,7 +143,8 @@ module Goods
     end
 
     def offer_picture_nodes offer_node
-      offer_node / 'picture'
+      res = offer_node / 'picture'
+      res.empty? ? offer_node / 'pictureUrl' : res
     end
 
     def extract_offers
