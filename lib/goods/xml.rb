@@ -47,7 +47,8 @@ module Goods
     end
 
     def shop_node
-      catalog_node / 'shop'
+      res = catalog_node / 'shop'
+      res.empty? ? catalog_node / 'vendor' : res
     end
 
     def extract_catalog_generation_date
