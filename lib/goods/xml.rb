@@ -140,12 +140,17 @@ module Goods
       (offer_node / 'age').first
     end
 
+    def offer_picture_nodes offer_node
+      offer_node / 'picture'
+    end
+
     def extract_offers
       offer_nodes.map do |v|
         offer = ::Goods::Offer.new(offer_node_to_hash(v))
         offer.age = offer_age(v)
         offer.barcodes = offer_barcodes(v)
         offer.params = offer_params(v)
+        offer.pictures = offer_pictures(v)
         offer
       end
     end
@@ -212,11 +217,23 @@ module Goods
       end
     end
 
+    def offer_pictures offer_node
+      offer_picture_nodes(offer_node).map do |v|
+        ::Goods::Picture.new(offer_picture_node_to_hash(v))
+      end
+    end
+
     def offer_param_node_to_hash offer_param_node
       {
         name: extract_attribute(offer_param_node, 'name'),
         unit: extract_attribute(offer_param_node, 'unit'),
         value: extract_text(offer_param_node)
+      }
+    end
+
+    def offer_piture_node_to_hash offer_picture_node
+      {
+          url: extract_text(offer_picture_node)
       }
     end
 
