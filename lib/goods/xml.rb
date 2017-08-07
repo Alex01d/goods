@@ -127,7 +127,7 @@ module Goods
 
     def offer_nodes
       res = shop_node / 'offers' / 'offer'
-      res.empty? ? shop_node / 'models' / 'model' : res
+      res.empty? ? (shop_node / 'models' / 'model') : res
     end
 
     def offer_barcode_nodes offer_node

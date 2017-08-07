@@ -8,6 +8,7 @@ module Goods
     attr_field :oldprice
     attr_field :currency_id
     attr_field :category_id
+    attr_field :categoryId
     attr_field :picture
     attr_field :pickup
     attr_field :delivery
