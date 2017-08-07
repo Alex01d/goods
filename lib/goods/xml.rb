@@ -169,11 +169,13 @@ module Goods
         available: (extract_attribute(offer_node, 'available', 'true') == 'true')
       )
 
+      offer_hash[:category_id] = extract_attribute(offer_node, 'categoryId') || extract_text(offer_node, 'categoryId')
+
       # nested elements
       {
         url: 'url',
         currency_id: 'currencyId',
-        category_id: 'categoryId',
+        # category_id: 'categoryId',
         picture: 'picture',
         pickup: 'pickup',
         delivery: 'delivery',

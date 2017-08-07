@@ -1,6 +1,6 @@
 module Goods
   class Offer < Element
-    attr_accessor :age, :category, :currency, :price, :params, :barcodes, :pictures, :categoryId
+    attr_accessor :age, :category, :currency, :price, :params, :barcodes, :pictures
 
     attr_field :url
     attr_field :price, type: :float
@@ -8,7 +8,6 @@ module Goods
     attr_field :oldprice
     attr_field :currency_id
     attr_field :category_id
-    attr_field :categoryId
     attr_field :picture
     attr_field :pickup
     attr_field :delivery
@@ -49,7 +48,7 @@ module Goods
     def apply_validation_rules
       validate :id, proc { |val| val.present? }
       validate :category_id, proc { |category_id| category_id.present? }
-      validate :currency_id, proc { |currency_id| currency_id.present? }
+      # validate :currency_id, proc { |currency_id| currency_id.present? } # fubag compat
       validate :price, proc { |price| price.present? && price >= 0 }
     end
   end
